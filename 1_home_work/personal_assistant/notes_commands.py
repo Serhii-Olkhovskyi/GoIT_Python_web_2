@@ -8,8 +8,8 @@ NOTES = Notes()
 
 
 def input_control(input_text: str, minimum=3, maximum=1000) -> str:
-    """Функция проверяет минимальное и максимальное колличество символов ввода
-    Возвращает строку"""
+    """Функция проверяет минимальное и максимальное колличество символов ввода. Возвращает строку"""
+
     while True:
         if (s := input(f'{input_text}\n>>>')) and len(s) < minimum:
             print(f'You entered less than {minimum} characters. Please re-enter')
@@ -87,6 +87,25 @@ def paginator(id_list: list, n=10):
                     yield lst
                 break
 
+
+# def show_notes_command():
+#     """Выодит все заметки постранично"""
+#     table = PrettyTable()
+#     table.field_names = ['id', 'Title', 'Text', 'tag', 'Date of change']
+#     if NOTES:
+#         next_flag = False
+#         for notes in paginator([a for a in NOTES.keys()], n=10):
+#             for id_note, title, text, teg, date in notes:
+#                 table.add_row([id_note, title, text, ', '.join(teg), date])
+#             print(f'{table.get_string()}')
+#             table.clear_rows()
+#             if next_flag := input(f'Type "next" to view the next page of notes, '
+#                                   f'or any character to stop browsing.\n').lower() == 'next':
+#                 continue
+#         if next_flag:
+#             return f'this is the last page with notes'
+#         return f' '
+#     return f'Notes not yet created'
 
 def show_notes_command():
     """Выодит все заметки постранично"""

@@ -1,11 +1,10 @@
 # All ContactBook functions
-import os
 from difflib import get_close_matches
-from book_class import ContactBook, Record, Address, Email, Birthday, CONTACTS
+from book_class import ContactBook, Record, CONTACTS
 from datetime import datetime, timedelta, date
 from input_error_handler import input_error
 import re
-from out_table import show_out_table
+from out_table import OutInfo
 
 
 def name_input(add_contact=None):
@@ -228,13 +227,14 @@ def show_all_info():
     :param:
     :return:
     """
+
     info_data = []
     for users in CONTACTS.values():
         info_data.append(users.get_user_details())
 
     table_header = ('Name', 'Phones', 'Birthday', 'Address', 'Email',)
-    show_out_table(info_data, table_header)
 
+    OutInfo(info_data, table_header).out_all_info()
     return f'ok.'
 
 
@@ -260,7 +260,7 @@ def list_birthday():
     if not lst:
         return 'No one birthday at this period'
     table_header = ('Name', 'Phones', 'Birthday', 'Address', 'Email',)
-    show_out_table(lst, table_header)
+    OutInfo(lst, table_header).out_all_info()
     return " "
 
 
@@ -433,6 +433,7 @@ def find_contacts():
             matches_list.append(users.get_user_details())
     if matches_list:
         table_header = ('Name', 'Phones', 'Birthday', 'Address', 'Email')
-        show_out_table(matches_list, table_header)
+        OutInfo(matches_list, table_header).out_all_info()
+
         return "Contact found"
     return f"No matches were found."

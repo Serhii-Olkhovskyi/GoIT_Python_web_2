@@ -1,4 +1,4 @@
-from out_table import show_out_table
+from out_table import OutInfo
 
 
 def all_commands():
@@ -41,9 +41,9 @@ def all_commands():
         ('View all contacts', 'show all contacts'),
         ('View notes', 'show notes'),
 
-        ]
+    ]
 
     table_header = ['DESCRIPTION', 'COMMAND']
-    show_out_table(help_list, table_header)
+    OutInfo(help_list, table_header).out_all_info()
 
     return f'.'

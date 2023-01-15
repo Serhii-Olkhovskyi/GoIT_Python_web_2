@@ -42,6 +42,9 @@ class Address(Field):
 class Phone(Field):
     """
     `Phone` class, an optional field with a contact phone numbers.
+
+    Parameters
+    ---------
     """
 
     @Field.value.setter
@@ -52,6 +55,9 @@ class Phone(Field):
 class Email(Field):
     """
     `Email` class, an optional field with a contact email address.
+
+    Parameters
+    ---------
     """
 
     @Field.value.setter
@@ -62,15 +68,13 @@ class Email(Field):
 class Birthday(Field):
     """
     `Birthday` class, an optional field with a contact birthday info.
+
+    Parameters
+    ---------
     """
 
     @Field.value.setter
     def value(self, value):
-        # if re.search(r"\b\d{2}[.]\d{2}[.]\d{4}", value):
-        #     value_splited = value.split(".")
-        #     self.__value = date(year=int(value_splited[2]), month=int(value_splited[1]), day=int(value_splited[0]))
-        # else:
-        #     raise Exception("Birthday must be in DD.MM.YYYY format")
         self._value = value
 
     def __str__(self) -> str:
@@ -80,7 +84,11 @@ class Birthday(Field):
 class Record:
     """
     `Record` class, which is responsible for the logic of
+
     adding/deleting/editing optional fields and storing the required fields.
+
+    Parameters
+    ---------
     """
 
     def __init__(self, name, address: object = None, phones: object = None, email: object = None,
